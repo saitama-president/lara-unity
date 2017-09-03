@@ -7,6 +7,6 @@ use App\Http\Controllers\Controller;
 class PlayController extends Controller
 {
     public function play(){
-       return view('play');
+       return view('welcome');
     }
 }
