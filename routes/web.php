@@ -1,7 +1,9 @@
 <?
 
-Route::get('play',"PlayController@play");
 
-Route::get('/', function () {
+
+Route::get('', function () {
     return view('welcome');
 });
+
+Route::get('play',"PlayController@play");
