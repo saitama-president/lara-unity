@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+    font-family: monospace;
+    color: white;
+}
+
+#JS_FRAME{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100vmin;
+    height: 100vmin;
+    background-color: darkgray;
+}
