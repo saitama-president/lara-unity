@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Foundation\Inspiring;
+use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,15 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+
+Artisan::command('unity', function () 
+{
+    
+    Storage::put("test.file",fopen(__FILE__,"r"));
+
+
+    echo view("welcome")->render();
+    $this->comment("NULLPO");
+}
+)->describe('Generate Unity ');
