@@ -6,6 +6,8 @@
 @section('contents')
 
 <script>
+{{\App\LU\data\Script::find($id)->first()->source}}
+    
 {{"
         class A{
             

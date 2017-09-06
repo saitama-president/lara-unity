@@ -4,11 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use App\LU\data\Script;
+use App\LU\data\Project;
 
 class CreateAll extends Migration
 {
+    /**
+     * 初期化するテーブル一覧
+     * @var type 
+     */
     private $tables=[
-        Script::class
+        Script::class,
+        Project::class,
     ];
 
 

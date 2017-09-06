@@ -10,5 +10,5 @@
 
 <a href="{{url('play')}}">Play</a>
 
-
+<a href="{{url('projects')}}">Projects</a>
 @endsection
