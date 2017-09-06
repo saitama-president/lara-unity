@@ -5,6 +5,8 @@
 
 @section('contents')
 
+{{\App\LU\data\Script::find($id)->first()->source}}
+
 <script>
 {{\App\LU\data\Script::find($id)->first()->source}}
     
