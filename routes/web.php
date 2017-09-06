@@ -47,4 +47,4 @@ Route::POST('projects/edit_commit', function() {
 });
 
 
-Route::get('play/source', "PlayController@source");
+Route::get('play/source/{id}', "PlayController@source");
