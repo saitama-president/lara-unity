@@ -11,6 +11,6 @@
 </div>
 
 @section('contents')
-<iframe id="JS_FRAME" src="{{url('play/source/')}}" scrolling="no" frameborder="no">
+<iframe id="JS_FRAME" src='{{url("play/source/$id")}}'  scrolling="no" frameborder="no">
 </iframe>
 @endsection

@@ -4,7 +4,7 @@
 @endsection
 
 @section('contents')
-
+sbs
 {{\App\LU\data\Script::find($id)->first()->source}}
 
 <script>
