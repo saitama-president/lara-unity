@@ -7,7 +7,7 @@
 @endsection
 
 <div>
-    <h3>あいうえおかきくけこ</h3>
+    <h3>playing...</h3>
 </div>
 
 @section('contents')
