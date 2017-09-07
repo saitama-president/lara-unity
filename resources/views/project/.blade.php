@@ -35,7 +35,10 @@
 
 <div>    
     <ul id="API_MAP">
-        @foreach(App\LU\data\API::All() as $api)
+        @foreach([
+            (object)["name"=>'test',"access_count"=>3,"success_count"=>2],
+            (object)["name"=>'tost',"access_count"=>1,"success_count"=>4],
+            ] as $api)
             <li onclick="alert(12345);">
             
             <span>{{$api->name}}</span>

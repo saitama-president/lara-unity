@@ -12,8 +12,9 @@
 
 <table>    
     <thead>
-        <th></th>
-        <th></th>
+        <th>Edit</th>
+        <th>Play</th>
+        <th>Inspect</th>
     </thead>
     <tbody>
 @foreach(\App\LU\data\Project::all() as $p)
@@ -23,6 +24,10 @@
     </td>
     <td>
         <a href='{{url("play/$p->id")}}'>Play</a>
+    </td>
+    <td>
+        {{--状態によって変化--}}
+        <a href='{{url("projects/$p->id/up")}}'>up</a>
     </td>
 </tr>
 @endforeach

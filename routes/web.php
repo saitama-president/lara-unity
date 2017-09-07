@@ -9,53 +9,65 @@ Route::get('', function () {
 });
 
 /* プロジェクト関連 */
-Route::get('projects', function() {
-    return view("project.projects");
-});
-Route::get('projects/add', function() {
+Route::group(['middleware' => ['EditMode']],function(){
+    Route::get('projects', function() {
+        return view("project.projects");
+    });
 
-    $prj=new Project();
-    $prj->name="test proj";
-    
-    $prj->save();
-    
-    Script::Insert(["id"=>$prj->id,"source"=>"OK"]);
-    return redirect("projects");
-});
+    Route::get('projects/add', function() {
 
-Route::get('play/{id}', "PlayController@play");
-Route::get('projects/edit/{id}', function($id) {
-    return view("project.edit", ["id" => $id]);
-});
+        $prj=new Project();
+        $prj->name="test proj";
 
-Route::POST('projects/edit_commit', function() {
-    $id= request("id");
-    $source= request("source");
-    
-    $script=Script::Where("id", $id)->first();
-    $script->source=$source;
-    $script->save();    
-    return redirect("projects/edit/$id");
-});
+        $prj->save();
 
+        Script::Insert(["id"=>$prj->id,"source"=>"OK"]);
+        return redirect("projects");
+    });
 
-/*
- * APIの利用可能状況を変更します
- */
-Route::get('projects/{id}/up',function($id){
-    return ["OK"];
-});
-Route::get('projects/{id}/down',function($id){
-    return ["OK"];
-});
-/*
- *  */
+    Route::get('play/{id}', "PlayController@play");
+    Route::get('projects/edit/{id}', function($id) {
+        return view("project.edit", ["id" => $id]);
+    });
 
+    Route::POST('projects/edit_commit', function() {
+        $id= request("id");
+        $source= request("source");
 
+        $script=Script::Where("id", $id)->first();
+        $script->source=$source;
+        $script->save();    
+        return redirect("projects/edit/$id");
+    });
+    /*
+        プロジェクト関連　ここまで
+     *  */
 
-
-
-Route::get('play/source/{id}', "PlayController@source");
+    /*
+     * APIの利用可能状況を変更します
+     */
+    Route::get('projects/{id}/up',function($id){
+        return redirect("projects/{$id}/inspect-view");
+    });
+    Route::get('projects/{id}/down',function($id){
+        return redirect("projects/{$id}/inspect-view");
+    });
+    /*
+     *  */
+    Route::get('projects/{id}/inspect-update',function(){
+        return ["OK"];
+    });
+    Route::get('projects/{id}/inspect-view',function(){
+        return view("project.inspect");
+    });
+    /*
+        監視画面関連　ここまで
+     *  */
+    Route::get('play/source/{id}', "PlayController@source");
 
 //APIテスト時は動的にrouteを生成
 
+});
+
+//APIのルートを取得して
+App\LU\data\API::Routes();
