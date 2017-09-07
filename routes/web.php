@@ -20,7 +20,6 @@ Route::get('projects/add', function() {
     $prj->save();
     
     Script::Insert(["id"=>$prj->id,"source"=>"OK"]);
-
     return redirect("projects");
 });
 
@@ -48,3 +47,6 @@ Route::POST('projects/edit_commit', function() {
 
 
 Route::get('play/source/{id}', "PlayController@source");
+
+//APIテスト時は動的にrouteを生成
+

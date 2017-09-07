@@ -12,6 +12,7 @@ class Script extends Model implements \App\Common\CreateTable{
   
   public function CreateTable(Blueprint $b) {
     $b->increments('id');
+    $b->string('name');
     $b->text("source");
     $b->timestamps();
   }
