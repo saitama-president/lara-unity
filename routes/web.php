@@ -23,10 +23,6 @@ Route::get('projects/add', function() {
     return redirect("projects");
 });
 
-
-
-
-//Route::get('play',"PlayController@list");
 Route::get('play/{id}', "PlayController@play");
 Route::get('projects/edit/{id}', function($id) {
     return view("project.edit", ["id" => $id]);
@@ -38,12 +34,25 @@ Route::POST('projects/edit_commit', function() {
     
     $script=Script::Where("id", $id)->first();
     $script->source=$source;
-    
-    $script->save();
- 
-    
+    $script->save();    
     return redirect("projects/edit/$id");
 });
+
+
+/*
+ * APIの利用可能状況を変更します
+ */
+Route::get('projects/{id}/up',function($id){
+    return ["OK"];
+});
+Route::get('projects/{id}/down',function($id){
+    return ["OK"];
+});
+/*
+ *  */
+
+
+
 
 
 Route::get('play/source/{id}', "PlayController@source");

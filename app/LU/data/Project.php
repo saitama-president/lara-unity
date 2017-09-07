@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Project extends Model implements \App\Common\CreateTable{
 
-  public $table="PROJECT";
+  public $table="project";
   
   public function CreateTable(Blueprint $b) {
     $b->increments('id');

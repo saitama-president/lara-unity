@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use App\LU\data\Script;
 use App\LU\data\Project;
 
+
 class CreateAll extends Migration
 {
     /**
@@ -15,6 +16,9 @@ class CreateAll extends Migration
     private $tables=[
         Script::class,
         Project::class,
+        App\LU\data\API::class,
+        \App\LU\data\APIParam::class,
+        \App\LU\data\Statistic::class,
     ];
 
 

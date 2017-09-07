@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class API extends Model implements \App\Common\CreateTable {
 
-    public $table="API";
+    public $table="api";
     
     public function CreateTable(\Illuminate\Database\Schema\Blueprint $b) {
         $b->increments('id');

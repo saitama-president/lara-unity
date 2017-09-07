@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Script extends Model implements \App\Common\CreateTable{
 
-  public $table="SCRIPT";
+  public $table="script";
   
   public function CreateTable(Blueprint $b) {
     $b->increments('id');
