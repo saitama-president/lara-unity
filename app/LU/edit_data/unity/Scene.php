@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
  * From 
  * https://docs.unity3d.com/jp/540/Manual/YAMLSceneExample.html
  */
-class GameObject extends Model implements \App\Common\CreateTable {
+class Scene extends Model implements \App\Common\CreateTable {
 
     const CLASS_ID = [
         1 => "GameObject",
