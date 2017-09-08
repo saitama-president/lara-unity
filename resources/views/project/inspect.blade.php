@@ -48,12 +48,19 @@
 
 
 <script>
+    {{--ダミー実行用のリクエスト--}}
+    
+    
 
+    {{--監視用の定期リクエスト--}}
     setInterval(function(){
         $.ajax({
             url:"/",
             method:"GET",
             data:{
+                
+            },
+            headers:{
                 
             },
             success:function(){

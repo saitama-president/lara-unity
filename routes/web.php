@@ -29,6 +29,9 @@ Route::group(['middleware' => ['EditMode']],function(){
     Route::get('projects/edit/{id}', function($id) {
         return view("project.edit", ["id" => $id]);
     });
+    Route::get('projects/api/list', function() {return view("project.api_list");});
+    Route::get('projects/api/edit/{id}', function($id) {return view("project.api_edit");});
+    Route::get('projects/api/edit/commit', function($id) {return view("project.api_edit");});
 
     Route::POST('projects/edit_commit', function() {
         $id= request("id");

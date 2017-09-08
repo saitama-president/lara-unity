@@ -1,5 +1,5 @@
 <?php
-namespace App\LU\data;
+namespace App\LU\edit_data;
 
 use Illuminate\Database\Eloquent\Model;
 

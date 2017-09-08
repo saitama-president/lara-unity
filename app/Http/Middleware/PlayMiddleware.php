@@ -19,6 +19,12 @@ class PlayMiddleware
         //route
         \Log::Debug($request->path());
         
+        //ユーザ情報などを取得する
+        $user_token= request()->header($key);
+        
+        //どのAPIだかを同定した上で統計情報更新
+        
+        
         //\Log::Debug($request->url());
         
         return $next($request);
