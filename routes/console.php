@@ -24,9 +24,24 @@ Artisan::command('unity', function ()
 {
     
     Storage::put("test.file",fopen(__FILE__,"r"));
-
-
     echo view("welcome")->render();
     $this->comment("NULLPO");
 }
 )->describe('Generate Unity ');
+
+Artisan::command('unity:generate_project', function () 
+{
+    
+    Storage::put("test.file",fopen(__FILE__,"r"));
+    echo view("welcome")->render();
+    $this->comment("NULLPO");
+})->describe('Generate Project ');
+
+Artisan::command('unity:generate_scene {scene_name}', function ($scene_name) 
+{
+    
+    
+    Storage::put("test.file",fopen(__FILE__,"r"));
+    echo view("welcome")->render();
+    $this->comment("NULLPO");
+})->describe('Generate Unity ');

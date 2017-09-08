@@ -13,6 +13,7 @@ class Project extends Model implements \App\Common\CreateTable{
   public function CreateTable(Blueprint $b) {
     $b->increments('id');
     $b->string("name");
+    $b->string("entry_point")->default("http://localhost");
     
     $b->timestamps();
   }

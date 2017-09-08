@@ -22,6 +22,15 @@ class API extends Model implements \App\Common\CreateTable {
         
     }
     
+    public function toCS(){
+        
+        return view("unity.cs",["API"=>$this])->render();
+    }
+    
+    public function toAjax(){
+        return "";
+    }
+    
     public function Valid(){
         
         return true;

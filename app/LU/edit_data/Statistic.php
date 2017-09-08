@@ -38,7 +38,7 @@ class Statistic extends Model implements \App\Common\CreateTable {
             $s=new Statistic();
             //一時間後をカウントする
             $from=\Carbon\Carbon::now();
-            $to=\Carbon\Carbon::now()->addHour();
+            $to=\Carbon\Carbon::now()->addHour(1);
             $s->begin_datetime=$from;
             $s->end_datetime=$to;
             $s->api_id=$api_id;
