@@ -37,9 +37,13 @@ class API extends Model implements \App\Common\CreateTable {
     }
     
     public static function Routes(){
+      
         
         //これはキャッシュからとってくる
-        $list=Cache::get("Routes",function(){           
+        $list=Cache::get("Routes",function(){
+            if(!\Illuminate\Support\Facades\Schema::hasTable("api")){
+              return [];
+            }
            return API::all();
         });
         

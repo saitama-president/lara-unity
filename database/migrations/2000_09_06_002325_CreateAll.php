@@ -16,9 +16,10 @@ class CreateAll extends Migration
     private $tables=[
         Script::class,
         Project::class,
-        App\LU\data\API::class,
-        \App\LU\data\APIParam::class,
-        \App\LU\data\Statistic::class,
+        
+        \App\LU\data\edit_data\API::c1lass,
+        \App\LU\data\edit_data\APIParam::class,
+        \App\LU\data\edit_data\Statistic::class,
     ];
 
 

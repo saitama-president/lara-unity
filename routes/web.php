@@ -73,4 +73,4 @@ Route::group(['middleware' => ['EditMode']],function(){
 });
 
 //APIのルートを取得して
-App\LU\data\API::Routes();
+App\LU\edit_data\API::Routes();
