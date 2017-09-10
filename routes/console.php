@@ -16,12 +16,15 @@ Artisan::command('unity', function ()
 
 Artisan::command('unity:run', function () 
 {
-    //echo `whoami`;
-    //PHP_OS
-    $command= \App\Common\get_unity_path();
+    $unity= \App\Common\get_unity_path();
+    
+    $serial=config("unity.serial");
+    $username=config("unity.username");
+    $password=config("unity.password");
+    
+    $command="$unity -serial {$serial} -username {$username} -password {$password} ";
+//-quit -batchmode -serial  -username '' -password 'MyPassw0rd'    
     `$command &`;
-    //$p->start();
-    //var_dump($e);
     $this->comment("RUNNED UNITY... $command");
 }
 )->describe('Generate Unity ');
@@ -30,6 +33,7 @@ Artisan::command('unity:run', function ()
 Artisan::command('unity:generate_project', function () 
 {
     Storage::put("test.file",fopen(__FILE__,"r"));
+    
     echo view("welcome")->render();
     $this->comment("NULLPO");
 })->describe('Generate Project ');
