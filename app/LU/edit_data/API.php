@@ -28,7 +28,7 @@ class API extends Model implements \App\Common\CreateTable {
     }
     
     public function toAjax(){
-        return "";
+        return view("web.ajax",["API"=>$this])->render();
     }
     
     public function Valid(){
@@ -37,13 +37,9 @@ class API extends Model implements \App\Common\CreateTable {
     }
     
     public static function Routes(){
-      
         
         //これはキャッシュからとってくる
-        $list=Cache::get("Routes",function(){
-            if(!\Illuminate\Support\Facades\Schema::hasTable("api")){
-              return [];
-            }
+        $list=Cache::get("Routes",function(){           
            return API::all();
         });
         
