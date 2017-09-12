@@ -8,6 +8,9 @@ Route::get('', function () {
     return view('index');
 });
 
+//管理者ログインを行う
+Route::get('login',"AdminController@login");
+
 /* プロジェクト関連 */
 Route::group(['middleware' => ['EditMode']],function(){
     Route::get('projects', function() {
@@ -69,8 +72,6 @@ Route::group(['middleware' => ['EditMode']],function(){
     Route::get('api/{id}/activity',function(){
         return view("api.activity");
     });
-    
-    
     /*
         監視画面関連　ここまで
      *  */

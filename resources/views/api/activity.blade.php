@@ -56,12 +56,17 @@
 {{--草--}}
 
 <div>
-
+    {{--ステータス情報の表示--}}
+    <p>
+        
+        
+    </p>    
     <ul id="ACTIVITY">
     @for($i=0;$i<365;$i++)
         @php
             $y=$i%7;
             $x=(int)($i/7);
+            
         @endphp
         <li class="x{{$x}} y{{$y}}"></li>
     @endfor

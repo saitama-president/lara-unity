@@ -15,6 +15,10 @@ class EditorMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(!session("admiin_login")){
+            return redirect("/login");
+        }
+        
         return $next($request);
     }
 }
