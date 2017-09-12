@@ -20,7 +20,7 @@ class PlayMiddleware
         \Log::Debug($request->path());
         
         //ユーザ情報などを取得する
-        $user_token= request()->header($key);
+        //$user_token= request()->header($key);
         
         //どのAPIだかを同定した上で統計情報更新
         
