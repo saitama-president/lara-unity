@@ -5,14 +5,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Process\Process;
 
-Artisan::command('unity', function () 
-{
-    
-    Storage::put("test.file",fopen(__FILE__,"r"));
-    echo view("welcome")->render();
-    $this->comment("NULLPO");
-}
-)->describe('Generate Unity ');
+
 
 Artisan::command('unity:run', function () 
 {
@@ -29,20 +22,3 @@ Artisan::command('unity:run', function ()
 }
 )->describe('Generate Unity ');
 
-
-Artisan::command('unity:generate_project', function () 
-{
-    Storage::put("test.file",fopen(__FILE__,"r"));
-    
-    echo view("welcome")->render();
-    $this->comment("NULLPO");
-})->describe('Generate Project ');
-
-Artisan::command('unity:generate_scene {scene_name}', function ($scene_name) 
-{
-    
-    
-    Storage::put("test.file",fopen(__FILE__,"r"));
-    echo view("welcome")->render();
-    $this->comment("NULLPO");
-})->describe('Generate Unity ');
