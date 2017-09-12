@@ -49,13 +49,14 @@ Route::group(['middleware' => ['EditMode']],function(){
     /*
      * APIの利用可能状況を変更します
      */
-    Route::get('projects/{id}/up',function($id){
+    Route::get('api/{id}/up',function($id){
         return redirect("projects/{$id}/inspect-view");
     });
-    Route::get('projects/{id}/down',function($id){
+    Route::get('api/{id}/down',function($id){
         return redirect("projects/{$id}/inspect-view");
     });
     /*
+     * 監視画面系
      *  */
     Route::get('projects/{id}/inspect-update',function(){
         return ["OK"];
@@ -63,14 +64,19 @@ Route::group(['middleware' => ['EditMode']],function(){
     Route::get('projects/{id}/inspect-view',function(){
         return view("project.inspect");
     });
+    
+    /*API単体の稼働状況*/
+    Route::get('api/{id}/activity',function(){
+        return view("api.activity");
+    });
+    
+    
     /*
         監視画面関連　ここまで
      *  */
     Route::get('play/source/{id}', "PlayController@source");
-
 //APIテスト時は動的にrouteを生成
-
 });
 
-//APIのルートを取得して
+//APIのルートを取得して設定
 App\LU\edit_data\API::Routes();
