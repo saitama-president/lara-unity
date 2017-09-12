@@ -5,10 +5,11 @@
 <style>
     ul#ACTIVITY{
       list-style: none;
+      position: relative;
       margin: 0;
       padding: 0;
-      width: 90%;
-      height: 10em;
+      width: 500px;
+      height: 64px;
       
     }
     #ACTIVITY li{
@@ -19,27 +20,27 @@
         display: inline-block;
         vertical-align: bottom;
         content: "";
-        min-width: 1em;
-        width: 1em;
-        max-width: 1em;
+        min-width: 8px;
+        width: 8px;
+        max-width: 8px;
 
-        min-height: 1em;
-        height: 1em;
-        max-height: 1em;
+        min-height: 8px;
+        height: 8px;
+        max-height: 8px;
         
         background-color: gray;
-        border-radius: 0.1em;
+        border-radius: 1px;
     }
     
-    @for($i=0;$i<53;$i++)
+    @for($i=0;$i<50;$i++)
     .x{{$i}} {
-        left: calc(100% / 53 * {{$i}}} );
+        left: {{ 2 * $i }}%;
     }
     @endfor
     
     @for($i=0;$i<7;$i++)
     .y{{$i}} {
-        top: calc(100% / 7 * {{$i}}} );
+        top: {{ (100/7) * ($i % 7) }}%;
     }
     @endfor
     
@@ -57,12 +58,12 @@
 <div>
 
     <ul id="ACTIVITY">
-    @for($i=-365;$i<0;$i++)
+    @for($i=0;$i<365;$i++)
         @php
-            $y=-$i%7;
-            $x=-$i/50;
+            $y=$i%7;
+            $x=(int)($i/7);
         @endphp
-        <li class="x{{$x}} y{{$y}}">{{$i+365}}</li>
+        <li class="x{{$x}} y{{$y}}"></li>
     @endfor
     </ul>
 </div>
