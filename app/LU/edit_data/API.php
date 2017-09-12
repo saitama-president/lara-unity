@@ -3,10 +3,10 @@
 namespace App\LU\edit_data;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Support\Facades\Route;
-
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
 class API extends Model implements \App\Common\CreateTable {
 
@@ -39,6 +39,16 @@ class API extends Model implements \App\Common\CreateTable {
     public static function Routes(){
         
         //これはキャッシュからとってくる
+        if(!Schema::hasTable("api")){
+            Schema::Create("api",function(Blueprint $b)
+                {
+                $api=new API();
+                $api->CreateTable($b);
+            });
+            
+        }
+        
+        
         $list=Cache::get("Routes",function(){           
            return API::all();
         });

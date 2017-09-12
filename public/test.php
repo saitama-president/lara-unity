@@ -1,8 +1,9 @@
 <?php
 
-$a=[
-    "A"=>$B="CCC",
-    "B"=>$B."DDD",
-];
+$a=true;
+
+$a|=false;
+
+$a|=false;
 
 var_dump($a);
