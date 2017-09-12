@@ -4,15 +4,18 @@ use Illuminate\Support\Facades\Request;
 use App\LU\data\Project;
 use App\LU\data\Script;
 
-Route::get('', function () {
+Route::get('/', function () {
     return view('index');
 });
 
 //管理者ログインを行う
 Route::get('login',"AdminController@login");
+Route::Post('login',"AdminController@login_commit");
 
 /* プロジェクト関連 */
 Route::group(['middleware' => ['EditMode']],function(){
+    Route::get('admin/menu',"AdminController@menu");
+
     Route::get('projects', function() {
         return view("project.projects");
     });

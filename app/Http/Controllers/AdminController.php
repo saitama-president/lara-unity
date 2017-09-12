@@ -14,7 +14,7 @@ class AdminController extends Controller
     }
     
     public function login_commit(){
-        return redirect("admin_menu");        
+        return redirect("admin/menu");        
     }
 
     public function admin_menu(){
