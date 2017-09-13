@@ -8,6 +8,7 @@ class APIController extends Controller
 {
     public function api_list(){
         
+        return view();
     }
     
     public function create(){

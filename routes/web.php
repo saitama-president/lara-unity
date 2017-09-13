@@ -17,11 +17,18 @@ Route::Post('admin/login',"AdminController@login_commit");
 Route::group(['middleware' => ['EditMode']],function(){
     //トップメニュー
     Route::get('admin/menu',"AdminController@menu");
-    Route::get('admin/play/{id}', "PlayController@play");
-    Route::get('admin/api/list', "APIController@list");
-    Route::get('admin/api/edit', "APIController@edit");
+    
+    Route::get('admin/api/list', "APIController@api_list");
+    Route::get('admin/api/edit/{id}', "APIController@edit");
+    Route::get('admin/api/add', "APIController@add");
+    Route::get('admin/api/statistic/{id}', "APIController@statistic");
+    
     Route::POST('admin/api/edit/commit', "APIController@edit");
+    
+    
+    Route::gete('admin/api/export', "APIController@export");
 
+    Route::get('admin/play/', "PlayController@play");
     /*
      * APIの利用可能状況を変更します
      */
