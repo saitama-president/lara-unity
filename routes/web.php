@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Request;
 use App\LU\data\Project;
 use App\LU\data\Script;
+use App\LU\edit_data\API;
 
 Route::get('/', function () {
     return view('index');
@@ -43,5 +44,3 @@ Route::group(['middleware' => ['EditMode']],function(){
 //APIテスト時は動的にrouteを生成
 });
 
-//APIのルートを取得して設定
-App\LU\edit_data\API::Routes();
