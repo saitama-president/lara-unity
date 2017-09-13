@@ -23,10 +23,10 @@ Route::group(['middleware' => ['EditMode']],function(){
     Route::get('admin/api/add', "APIController@add");
     Route::get('admin/api/statistic/{id}', "APIController@statistic");
     
-    Route::POST('admin/api/edit/commit', "APIController@edit");
+    Route::POST('admin/api/edit/commit', "APIController@edit_commit");
     
     
-    Route::gete('admin/api/export', "APIController@export");
+    Route::get('admin/api/export', "APIController@export");
 
     Route::get('admin/play/', "PlayController@play");
     /*
