@@ -12,5 +12,5 @@
 
 <a href="{{url('projects')}}">Projects</a>
 
-<a href="{{url('login')}}">Admin</a>
+<a href="{{url('admin/login')}}">Admin-login</a>
 @endsection

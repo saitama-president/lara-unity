@@ -13,6 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists("users");
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -21,6 +22,15 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        
+        /*管理者ユーザ一人だけ*/
+        Illuminate\Support\Facades\DB::Table("users")
+            ->insert([
+            "name"=>"admin",
+            "email"=>"",
+            "password"=>"xxxxx",
+            ]);
+        
     }
 
     /**

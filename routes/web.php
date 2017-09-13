@@ -9,67 +9,28 @@ Route::get('/', function () {
 });
 
 //管理者ログインを行う
-Route::get('login',"AdminController@login");
-Route::Post('login',"AdminController@login_commit");
+Route::get('admin/login',"AdminController@login");
+Route::Post('admin/login',"AdminController@login_commit");
 
 /* プロジェクト関連 */
 Route::group(['middleware' => ['EditMode']],function(){
+    //トップメニュー
     Route::get('admin/menu',"AdminController@menu");
-
-    Route::get('projects', function() {
-        return view("project.projects");
-    });
-
-    Route::get('projects/add', function() {
-
-        $prj=new Project();
-        $prj->name="test proj";
-
-        $prj->save();
-
-        Script::Insert(["id"=>$prj->id,"source"=>"OK"]);
-        return redirect("projects");
-    });
-
-    Route::get('play/{id}', "PlayController@play");
-    Route::get('projects/edit/{id}', function($id) {
-        return view("project.edit", ["id" => $id]);
-    });
-    Route::get('projects/api/list', function() {return view("project.api_list");});
-    Route::get('projects/api/edit/{id}', function($id) {return view("project.api_edit");});
-    Route::get('projects/api/edit/commit', function($id) {return view("project.api_edit");});
-
-    Route::POST('projects/edit_commit', function() {
-        $id= request("id");
-        $source= request("source");
-
-        $script=Script::Where("id", $id)->first();
-        $script->source=$source;
-        $script->save();    
-        return redirect("projects/edit/$id");
-    });
-    /*
-        プロジェクト関連　ここまで
-     *  */
+    Route::get('admin/play/{id}', "PlayController@play");
+    Route::get('admin/api/list', "APIController@list");
+    Route::get('admin/api/edit', "APIController@edit");
+    Route::POST('admin/api/edit/commit', "APIController@edit");
 
     /*
      * APIの利用可能状況を変更します
      */
-    Route::get('api/{id}/up',function($id){
-        return redirect("projects/{$id}/inspect-view");
-    });
-    Route::get('api/{id}/down',function($id){
-        return redirect("projects/{$id}/inspect-view");
-    });
+    Route::get('admin/api/{id}/up',"APIController@up");
+    Route::get('admin/api/{id}/down',"APIController@down");
     /*
      * 監視画面系
      *  */
-    Route::get('projects/{id}/inspect-update',function(){
-        return ["OK"];
-    });
-    Route::get('projects/{id}/inspect-view',function(){
-        return view("project.inspect");
-    });
+    Route::get('admin/api/inspect-update',"APIController@inspectUpdate");
+    Route::get('admin/api/inspect-view',"APIController@inspectView");
     
     /*API単体の稼働状況*/
     Route::get('api/{id}/activity',function(){

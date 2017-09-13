@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\LU\data\Script;
-use App\LU\data\Project;
 
 
 class CreateAll extends Migration
@@ -14,12 +12,13 @@ class CreateAll extends Migration
      * @var type 
      */
     private $tables=[
-        Script::class,
-        Project::class,
         
-        \App\LU\data\edit_data\API::c1lass,
-        \App\LU\data\edit_data\APIParam::class,
-        \App\LU\data\edit_data\Statistic::class,
+        App\LU\edit_data\Script::class,
+        App\LU\edit_data\Project::class,
+        
+        \App\LU\edit_data\API::class,
+        \App\LU\edit_data\APIParam::class,
+        \App\LU\edit_data\Statistic::class,
     ];
 
 
@@ -34,6 +33,7 @@ class CreateAll extends Migration
         
         foreach($this->tables as  $table){
             $o=new $table;
+            Schema::dropIfExists($o->table);
             Schema::Create($o->table,function(Blueprint $b)
                 use($o)
                 {

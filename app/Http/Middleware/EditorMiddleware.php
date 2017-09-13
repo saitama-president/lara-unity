@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class EditorMiddleware
 {
@@ -15,8 +16,8 @@ class EditorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(!session("admiin_login")){
-            return redirect("/login");
+        if(empty(Auth::id())){
+            return redirect("/admin/login");
         }
         
         return $next($request);

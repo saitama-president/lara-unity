@@ -13,11 +13,27 @@ class AdminController extends Controller
         return view("admin.login");
     }
     
+    /**
+     * パスワード確認できたらメニューに飛ばす
+     * @return type
+     */
     public function login_commit(){
-        return redirect("admin/menu");        
+        $server=request()->server();
+        
+        //リモートホスト許可チェック
+        
+        //パスワード許可チェック
+        $password= request("password");
+        
+        if(config("admin.password")==$password){
+            auth()->loginUsingId(1);
+        }        
+        
+        return redirect("admin/menu")
+            ->with("message","ログインしました");        
     }
 
-    public function admin_menu(){
+    public function menu(){
         return view("admin.menu");        
     }
 }
