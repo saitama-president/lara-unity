@@ -9,8 +9,6 @@
 @section('contents')
 <h1>API List</h1> 
 
-<a href="{{url("admin/api/status")}}">Realtime Status</a>
-
 <a href='{{url("admin/api/add")}}'>追加</a>
 
 <div>
@@ -24,9 +22,9 @@
     <tbody>
       @foreach(\App\LU\edit_data\API::all() as $api)
       <tr>
-        <td>{{$api->method}}</td>
+        <td>A</td>
           
-        <td>{{$api->entry_point}}</td>
+        <td>B</td>
         
       </tr>
       @endforeach

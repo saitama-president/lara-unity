@@ -48,6 +48,7 @@
     {{csrf_field()}}
     <input type=hidden name="id" value="{{$id}}" />
     <button>登録</button>
+    <a href="{{url('admin/api/list')}}">戻る</a>
 </form>
 
 

@@ -21,6 +21,7 @@ Route::group(['middleware' => ['EditMode']],function(){
     Route::get('admin/api/list', "APIController@api_list");
     Route::get('admin/api/edit/{id}', "APIController@edit");
     Route::get('admin/api/add', "APIController@add");
+    Route::get('admin/api/status', "APIController@status");
     Route::get('admin/api/statistic/{id}', "APIController@statistic");
     
     Route::POST('admin/api/edit/commit', "APIController@edit_commit");

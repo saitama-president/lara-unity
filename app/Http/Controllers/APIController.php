@@ -50,7 +50,7 @@ class APIController extends Controller
         
         $api->save();
         
-        return redirect("api/edit/{$api->id}");
+        return redirect("admin/api/edit/{$api->id}");
     }
     
     
