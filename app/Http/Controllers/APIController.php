@@ -11,13 +11,9 @@ class APIController extends Controller
     public function api_list(){
         
         //var_dump(API::all());
-        foreach(API::WHERE("method","POST")->get() as $api){
-            dd($api->method);
-        }
-        exit;
-        
+         
         return view("api.list",[
-            "api_list"=>API::all()->toArray(),            
+            "api_list"=>API::all(),            
             ]);
     }
     
