@@ -11,6 +11,9 @@ use Illuminate\Database\Schema\Blueprint;
 class API extends Model implements \App\Common\CreateTable {
 
     public $table="api";
+    //public $method;
+    //public $primaryKey=["method","entry_point"];
+    //public $fillable=["method"];
     
     public function CreateTable(\Illuminate\Database\Schema\Blueprint $b) {
         $b->increments('id');
@@ -31,10 +34,13 @@ class API extends Model implements \App\Common\CreateTable {
         return view("web.ajax",["API"=>$this])->render();
     }
     
+    /*
     public function Valid(){
         
         return true;
     }
+     * 
+     */
     
     public static function Routes(){
         
@@ -44,8 +50,7 @@ class API extends Model implements \App\Common\CreateTable {
                 {
                 $api=new API();
                 $api->CreateTable($b);
-            });
-            
+            });            
         }
         
         
@@ -53,9 +58,19 @@ class API extends Model implements \App\Common\CreateTable {
            return API::all();
         });
         
+        
         //有効なやつだけ生成する
         foreach($list as $item){
-            \Log::debug($item);
+            
+            switch(mb_strtoupper($item->method)){
+                
+                case "POST":
+                    Route::Post( $item->entry_point,function(){return "OK";});                    
+                    break;
+                case "GET":
+                    Route::Get( $item->entry_point,function(){return "OK";});                    
+                    break;
+            }
         }
         
         //Route::Get("aaa",function(){return "OK";});

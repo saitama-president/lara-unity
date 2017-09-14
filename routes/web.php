@@ -51,3 +51,7 @@ Route::group(['middleware' => ['EditMode']],function(){
 //APIテスト時は動的にrouteを生成
 });
 
+
+Route::group(['middleware' => ['PlayMode']],function(){
+    API::Routes();
+});

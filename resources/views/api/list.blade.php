@@ -2,13 +2,34 @@
 
 @section('head')
 <script>
-$("#API_LIST").ready(
-    function(){
-        alert(12345);
+    update=function () {
+        console.log("A");
     }
-);
+    
+    $("#API_LIST").ready(
+        setInterval(update,3000)
+
+    );
+
+
 
 </script>
+
+<style>
+    
+    li{
+        display: inline-block;
+        min-width: 32px;
+        width: 32px;
+        
+        min-height: 32px;
+        height: 32px;
+        background-color: gray;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+    
+</style>
 
 @endsection
 
@@ -18,13 +39,20 @@ $("#API_LIST").ready(
 <a href='{{url("admin/api/add")}}'>追加</a>
 
 <ul id="API_LIST">
+    
     @foreach($api_list as $api)
     <li>
-        <a href='{{url("admin/api/edit?id=$api->id")}}'>編集</a>
-        <a href='{{url("admin/api/edit?id=$api->id")}}'>状態</a>
-        <span>{{$api->name}}</span>
+        
+        {{--
+        <a href='{{url("admin/api/edit/$api->id")}}'>編</a>
+        <a href='{{url("admin/api/edit/$api->id")}}'>状</a>
+        <span>{{"AA"}}</span>
+                
+        <span>{{"BB"}}</span>
+        --}}
     </li>
     @endforeach
+    
 </ul>
 
 @endsection

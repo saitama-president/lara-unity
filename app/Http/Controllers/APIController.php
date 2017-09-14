@@ -10,32 +10,53 @@ class APIController extends Controller
 {
     public function api_list(){
         
+        //var_dump(API::all());
+        foreach(API::WHERE("method","POST")->get() as $api){
+            dd($api->method);
+        }
+        exit;
+        
         return view("api.list",[
-            "api_list"=>API::all(),            
+            "api_list"=>API::all()->toArray(),            
             ]);
     }
     
     public function add(){
-        
-        
-        
         return view("api.edit",[
             "id"=>0,
             "params"=>[]
         ]);
     }
     
-    public function edit_commit(){
+    public function edit(){
         $id=request("id");
         
+        return view("api.edit",[
+            "id"=>$id,
+            "params"=>[]
+        ]);        
+    }
+
+
+    public function edit_commit(){
+        $id=request("id");
+        $method=request("method");
+        $entry_point=request("entry_point");
+        
         $api= empty($id)
-            ?new API()
-            :API::find($id)->first();
+            ?API::firstOrNew([])
+            :API::find($id)->first()
+            ;
+        
+        $api->method=$method;
+        $api->entry_point=$entry_point;
+        $api->action="";
         
         $api->save();
         
-        return redirect("api/edit?id={$id}");
+        return redirect("api/edit/{$api->id}");
     }
+    
     
     public function create(){
     }
@@ -46,8 +67,7 @@ class APIController extends Controller
     public function delete(){
     }
     
-    public function edit($id){
-    }
+
     
     
 }
