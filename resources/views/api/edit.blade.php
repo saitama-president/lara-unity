@@ -5,7 +5,8 @@
 @endsection
 
 @section('contents')
-<h1>API Edit</h1> 
+<h1>API Edit</h1>
+
 
 <form action='{{url("admin/api/edit/commit")}}' method="POST" >
     <table>
