@@ -4,24 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-
 class CreateAll extends Migration
 {
-    /**
-     * 初期化するテーブル一覧
-     * @var type 
-     */
-    private $tables=[
-        
-        App\LU\edit_data\Script::class,
-        App\LU\edit_data\Project::class,
-        
-        \App\LU\edit_data\API::class,
-        \App\LU\edit_data\APIParam::class,
-        \App\LU\edit_data\Statistic::class,
-    ];
+    private $name_space="\\App\\LU\\edit_data";
 
 
+    private function data_files(){
+        
+        return \File::files(app_path("WM/data"));
+    }
+     
     /**
      * Run the migrations.
      *
@@ -29,16 +21,23 @@ class CreateAll extends Migration
      */
     public function up()
     {
+        echo "CREATE_INIT";
         
         
-        foreach($this->tables as  $table){
-            $o=new $table;
-            Schema::dropIfExists($o->table);
-            Schema::Create($o->table,function(Blueprint $b)
-                use($o)
-                {
-                $o->CreateTable($b);
-            }); 
+        foreach ($this->data_files() as $data){
+            //var_dump(\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class);
+            $base_name=basename($data,'.php');
+            
+            $class_name="$this->name_space\\$base_name";
+            $table=new $class_name(); 
+            $table_name=$table->table;
+            var_dump($table_name."作成");
+            Schema::dropIfExists($table_name);
+            Schema::create($table_name, function(Blueprint $b)
+                    use($class_name,$table_name) {
+//                    echo "テーブル：{$table_name} 作成 \n";
+                    $class_name::CreateTable($b);
+            });
         }
     }
 
@@ -48,10 +47,17 @@ class CreateAll extends Migration
      * @return void
      */
     public function down()
-    {        
-        foreach($this->tables as  $table){
-            $o=new $table;
-            Schema::Drop($o->table);
-        }                
+    {
+       foreach ($this->data_files() as $data){
+            //var_dump(\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class);
+            $base_name=basename($data,'.php');            
+            $class_name="$this->name_space\\$base_name";
+            $table=new $class_name(); 
+            $table_name=$table->table;
+            var_dump($table_name."作成");
+            Schema::dropIfExists($table_name);
+        }
     }
 }
+
+

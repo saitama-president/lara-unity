@@ -8,6 +8,27 @@ use App\LU\edit_data\API;
 
 class APIController extends Controller
 {
+    public function templates_list(){
+        return view("api/templates");
+    }
+    
+    public function template_import(){
+        
+        return redirect("admin/api/templates");
+    }
+    
+    public function template_remove(){
+        
+        return redirect("admin/api/templates");
+    }
+    
+    public function template_store($id){
+        
+        
+        return redirect("admin/api/templates");
+    }
+
+    
     public function api_list(){
         
         //var_dump(API::all());

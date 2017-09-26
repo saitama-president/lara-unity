@@ -41,6 +41,15 @@ Route::group(['middleware' => ['EditMode']],function(){
     Route::get('admin/api/inspect-update',"APIController@inspectUpdate");
     Route::get('admin/api/inspect-view',"APIController@inspectView");
     
+    /*
+     * テンプレート関連
+     */
+    Route::get("admin/api/templates","APIController@templates_list");
+    Route::get("admin/api/template_import","APIController@template_import");
+    Route::get("admin/api/template_remove","APIController@template_remove");
+    Route::get("/admin/api/template_import_store/{id}","APIController@template_store");//直接インポート
+    
+    
     /*API単体の稼働状況*/
     Route::get('api/{id}/activity',function(){
         return view("api.activity");
@@ -49,6 +58,8 @@ Route::group(['middleware' => ['EditMode']],function(){
         監視画面関連　ここまで
      *  */
     Route::get('play/source/{id}', "PlayController@source");
+    
+    
 //APIテスト時は動的にrouteを生成
 });
 
