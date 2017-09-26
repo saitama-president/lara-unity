@@ -11,7 +11,7 @@ class CreateAll extends Migration
 
     private function data_files(){
         
-        return \File::files(app_path("WM/data"));
+        return \File::files(app_path("LU/edit_data"));
     }
      
     /**

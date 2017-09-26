@@ -15,7 +15,7 @@ class API extends Model implements \App\Common\CreateTable {
     //public $primaryKey=["method","entry_point"];
     //public $fillable=["method"];
     
-    public function CreateTable(\Illuminate\Database\Schema\Blueprint $b) {
+    public static function CreateTable(\Illuminate\Database\Schema\Blueprint $b) {
         $b->increments('id');
         $b->string('method');
         $b->string('entry_point');

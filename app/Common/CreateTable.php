@@ -4,5 +4,5 @@ namespace App\Common;
 
 interface CreateTable{
     
-    public function CreateTable(\Illuminate\Database\Schema\Blueprint $b);
+    public static function CreateTable(\Illuminate\Database\Schema\Blueprint $b);
 }

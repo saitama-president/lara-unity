@@ -10,7 +10,7 @@ class Script extends Model implements \App\Common\CreateTable{
 
   public $table="script";
   
-  public function CreateTable(Blueprint $b) {
+  public static function CreateTable(Blueprint $b) {
     $b->increments('id');
     $b->string('name');
     $b->text("source");

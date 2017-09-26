@@ -10,7 +10,7 @@ class Statistic extends Model implements \App\Common\CreateTable {
 
     public $table="statictic";
     
-    public function CreateTable(\Illuminate\Database\Schema\Blueprint $b) {
+    public static function CreateTable(\Illuminate\Database\Schema\Blueprint $b) {
         $b->increments("id");
         $b->integer('api_id');
         $b->integer('access_count')->default(0);

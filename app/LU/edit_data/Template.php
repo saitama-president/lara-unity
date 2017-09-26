@@ -10,70 +10,39 @@ use Illuminate\Database\Schema\Blueprint;
 
 class Template extends Model implements \App\Common\CreateTable {
 
-    public $table="api";
+    public $table="template";
     //public $method;
     //public $primaryKey=["method","entry_point"];
     //public $fillable=["method"];
     
-    public function CreateTable(\Illuminate\Database\Schema\Blueprint $b) {
+    public static function CreateTable(\Illuminate\Database\Schema\Blueprint $b) {
         $b->increments('id');
-        $b->string('method');
-        $b->string('entry_point');
-        $b->string("action");
-        $b->timestamps();
-        $b->unique(["method","entry_point"],"uniq_keys");
+        $b->string('name');
+        $b->string('description');
+        $b->string('source');//resource_pathに渡して動作するファイル名
         
     }
     
-    public function toCS(){
+    /**
+     * テンプレートとして登録してしまう
+     * @param type $id
+     * @param type $data
+     */
+    public static function StoreTemplate($data){
         
-        return view("unity.cs",["API"=>$this])->render();
-    }
-    
-    public function toAjax(){
-        return view("web.ajax",["API"=>$this])->render();
-    }
-    
-    /*
-    public function Valid(){
+        
+        
         
         return true;
     }
-     * 
-     */
     
-    public static function Routes(){
-        
-        //これはキャッシュからとってくる
-        if(!Schema::hasTable("api")){
-            Schema::Create("api",function(Blueprint $b)
-                {
-                $api=new API();
-                $api->CreateTable($b);
-            });            
-        }
+    public function getAPIList(){
+        /*
+            ファイルを読み込んでAPIリストを取得
+         *          */
         
         
-        $list=Cache::get("Routes",function(){           
-           return API::all();
-        });
-        
-        
-        //有効なやつだけ生成する
-        foreach($list as $item){
-            
-            switch(mb_strtoupper($item->method)){
-                
-                case "POST":
-                    Route::Post( $item->entry_point,function(){return "OK";});                    
-                    break;
-                case "GET":
-                    Route::Get( $item->entry_point,function(){return "OK";});                    
-                    break;
-            }
-        }
-        
-        //Route::Get("aaa",function(){return "OK";});
+        return [];
     }
-
+    
 }
