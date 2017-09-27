@@ -28,10 +28,14 @@ class Template extends Model implements \App\Common\CreateTable {
      * @param type $id
      * @param type $data
      */
-    public static function StoreTemplate($data){
+    public static function StoreTemplate($name="NO_NAME",$description="DESC",
+        $api_list=[]){
         
+        $template=new Template();
+        $template->save();   
+        $store_path=resource_path("templates/{$template->id}.dat");
         
-        
+        \File::put($store_path, json_encode($api_list));
         
         return true;
     }

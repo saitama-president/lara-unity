@@ -3,11 +3,13 @@
 use Illuminate\Http\Request;
 use App\LU\edit_data\API;
 
-/*
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+/*ハートビート*/
+Route::group(['middleware' => ['api']],function(){
+    Route::Get("hb",function(){
+        return ["OK"];
+    });
 });
-*/
+
 //APIのルートを取得して設定
 Route::group(['middleware' => ['PlayMode']],function(){
     API::Routes();

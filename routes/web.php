@@ -8,6 +8,14 @@ use App\LU\edit_data\API;
 Route::get('/', function () {
     return view('index');
 });
+/*
+Route::group(['middleware' => ['api']],function(){
+    Route::Get("hb",function(){
+        return ["OK"];
+    });
+});
+ * 
+ */
 
 //管理者ログインを行う
 Route::get('admin/login',"AdminController@login");
