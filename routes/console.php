@@ -22,3 +22,20 @@ Artisan::command('unity:run', function ()
 }
 )->describe('Generate Unity ');
 
+Artisan::command("cs:generate",function(){
+    
+    $service= new \App\LU\service\csGenerateService();
+    
+     
+    
+    $this->info($service->GenerateCSSource("DEADBEEF"));
+    
+    return true;
+    
+});
+
+Artisan::command("test",function(){
+    
+    
+    return 12345;
+});
