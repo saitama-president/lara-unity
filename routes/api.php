@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\LU\edit_data\API;
+use App\LU\data\API;
 
 /*ハートビート*/
 

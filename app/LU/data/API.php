@@ -19,6 +19,7 @@ class API extends Model implements \App\Common\CreateTable {
         $b->increments('id');
         $b->string('method');
         $b->string('entry_point');
+        
         $b->string("action");
         $b->timestamps();
         $b->unique(["method","entry_point"],"uniq_keys");
@@ -61,11 +62,22 @@ class API extends Model implements \App\Common\CreateTable {
         
         //有効なやつだけ生成する
         foreach($list as $item){
-            
+            $class=['project\Controllers'."\\testAppController","TestMethod"];
+            //クロージャの中身は？
             switch(mb_strtoupper($item->method)){
                 
                 case "POST":
-                    Route::Post( $item->entry_point,function(){return "OK";});                    
+                    
+                    
+                    //call_user_func($callback)
+                    Route::Post($item->entry_point,
+                        function()
+                        use($user_func)
+                        {
+                            return "OK";
+                        
+                        }
+                        );                 
                     break;
                 case "GET":
                     Route::Get( $item->entry_point,function(){return "OK";});                    
@@ -73,7 +85,6 @@ class API extends Model implements \App\Common\CreateTable {
             }
         }
         
-        //Route::Get("aaa",function(){return "OK";});
     }
 
 }

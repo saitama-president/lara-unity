@@ -6,12 +6,12 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateAll extends Migration
 {
-    private $name_space="\\App\\LU\\edit_data";
+    private $name_space="\\App\\LU\\data";
 
 
     private function data_files(){
         
-        return \File::files(app_path("LU/edit_data"));
+        return \File::files(app_path("LU/data"));
     }
      
     /**

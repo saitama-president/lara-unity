@@ -3,10 +3,18 @@
 use Illuminate\Support\Facades\Request;
 use App\LU\data\Project;
 use App\LU\data\Script;
-use App\LU\edit_data\API;
+use App\LU\data\API;
 
 Route::get('/', function () {
     return view('index');
+});
+
+Route::get('tt', function () {
+    
+    
+    $class= \Project\Controllers\testAppController::class;
+    $con=new $class();
+    return call_user_func([$con,"TestMethod"]);
 });
 /*
 Route::group(['middleware' => ['api']],function(){

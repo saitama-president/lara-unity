@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      @foreach(\App\LU\edit_data\API::all() as $api)
+      @foreach(\App\LU\data\API::all() as $api)
       <tr>
         <td>A</td>          
         <td>B</td>        
