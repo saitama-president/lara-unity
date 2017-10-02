@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-use App\LU\edit_data\API;
+use App\LU\data\API;
 use Closure;
 
 class PlayMiddleware

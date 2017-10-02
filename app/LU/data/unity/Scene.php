@@ -1,6 +1,6 @@
 <?php
 
-namespace App\LU\edit_data\unity;
+namespace App\LU\data\unity;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;

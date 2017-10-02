@@ -1,6 +1,6 @@
 <?php
 
-namespace App\LU\edit_data;
+namespace App\LU\data;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Route;

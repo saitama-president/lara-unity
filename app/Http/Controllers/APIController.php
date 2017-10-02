@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use App\LU\edit_data\API;
+use App\LU\data\API;
 
 class APIController extends Controller
 {

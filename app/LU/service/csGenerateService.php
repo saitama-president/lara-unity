@@ -4,7 +4,7 @@ namespace App\LU\service;
 class csGenerateService {
     //put your code here
     
-    public function GenerateCSSource(
+    public function GenerateCSSource(        
         $class_name,
         $namespace="LU.API",
         $extend="MonoBehaviour",
@@ -26,5 +26,10 @@ class csGenerateService {
             "namespace"=>$namespace,
             "implements"=> implode(",",array_merge([$extend],$implements)) 
         ])->render();
+    }
+    
+    public function GenerateAPISource(\App\LU\data\API $api){
+        
+        
     }
 }
