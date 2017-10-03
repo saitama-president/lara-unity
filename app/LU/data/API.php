@@ -43,7 +43,16 @@ class API extends Model implements \App\Common\CreateTable {
      * 
      */
     
+    public static function isEnableAPI(){        
+        return !file_exists(storage_path('/framework/api_down'));
+    }
+    
     public static function Routes(){
+        
+        if(!API::isEnableAPI()){
+            
+            return;
+        }
         
         //これはキャッシュからとってくる
         if(!Schema::hasTable("api")){
@@ -58,11 +67,11 @@ class API extends Model implements \App\Common\CreateTable {
         $list=Cache::get("Routes",function(){           
            return API::all();
         });
-        
+                
         
         //有効なやつだけ生成する
         foreach($list as $item){
-            $class=['project\Controllers'."\\testAppController","TestMethod"];
+            $user_func=['project\Controllers'."\\testAppController","TestMethod"];
             //クロージャの中身は？
             switch(mb_strtoupper($item->method)){
                 

@@ -13,6 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        
+        Commands\APIDownCommand::class,
+        Commands\APIUpCommand::class,
         //
     ];
 
@@ -24,6 +27,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        
         // $schedule->command('inspire')
         //          ->hourly();
     }

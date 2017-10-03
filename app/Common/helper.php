@@ -15,3 +15,8 @@ function get_unity_path(){
   
   
 }
+
+function is_running(){
+    
+    
+}
