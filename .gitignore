@@ -9,6 +9,11 @@
 Homestead.json
 Homestead.yaml
 npm-debug.log
-project
 .env
 /nbproject/private/
+
+#Project関連
+project/*
+!/project/.gitkeep
+!/project/Data/.gitkeep
+!/project/Controllers/.gitkeep
