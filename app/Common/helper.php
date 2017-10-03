@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Common;
-
 function get_unity_path(){
   
   switch (PHP_OS){
@@ -14,6 +12,10 @@ function get_unity_path(){
   }
   
   
+}
+
+function process_time(){
+  return microtime(true)-$_SERVER["REQUEST_TIME_FLOAT"];
 }
 
 function is_running(){

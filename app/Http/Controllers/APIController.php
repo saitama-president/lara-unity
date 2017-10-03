@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\LU\data\API;
+use Illuminate\Support\Facades\Validator;
 
 class APIController extends Controller
 {
@@ -45,13 +46,14 @@ class APIController extends Controller
         ]);
     }
     
-    public function edit(){
-        $id=request("id");
+    public function edit($id){
+        
+        $api= API::where("id",$id)->first();
         
         return view("api.edit",[
             "id"=>$id,
-            "params"=>[]
-        ]);        
+            "api"=>$api,
+        ]);
     }
 
 
@@ -59,6 +61,9 @@ class APIController extends Controller
         $id=request("id");
         $method=request("method");
         $entry_point=request("entry_point");
+        $action=request("action");        
+        $controller=request("controller");
+        $valid=true;
         
         $api= empty($id)
             ?API::firstOrNew([])
@@ -67,11 +72,24 @@ class APIController extends Controller
         
         $api->method=$method;
         $api->entry_point=$entry_point;
-        $api->action="";
+        $api->action="{$controller}@{$action}";
         
+        $validator=Validator::make(request()->all(), [            
+            'controller' => 'required|min:1|max:50',
+            'action' => 'required|min:1|max:50',
+        ]);    
+        if($validator->fails()){
+            
+            
+            $message= implode(",",$validator->errors()->all());
+            
+            return  redirect("admin/api/edit/{$api->id}")
+                ->with("message",$message);
+        }
         $api->save();
         
-        return redirect("admin/api/edit/{$api->id}");
+        return redirect("admin/api/edit/{$api->id}")
+            ->with("message","登録しました");
     }
     
     

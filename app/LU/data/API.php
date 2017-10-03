@@ -35,6 +35,18 @@ class API extends Model implements \App\Common\CreateTable {
         return view("web.ajax",["API"=>$this])->render();
     }
     
+    public function action(){
+        
+        list($controller,$action)= explode("@", $this->action);
+        
+        return $action;
+    }
+    
+    public function controller(){
+        list($controller,$action)= explode("@", $this->action);
+        return $controller;
+    }
+    
     /*
     public function Valid(){
         
@@ -42,6 +54,9 @@ class API extends Model implements \App\Common\CreateTable {
     }
      * 
      */
+    public function params(){
+        return $this->hasMany('App\LU\data\APIParam');
+    }
     
     public static function isEnableAPI(){        
         return !file_exists(storage_path('/framework/api_down'));
@@ -51,7 +66,7 @@ class API extends Model implements \App\Common\CreateTable {
         
         if(!API::isEnableAPI()){
             
-            return;
+            return false;
         }
         
         //これはキャッシュからとってくる

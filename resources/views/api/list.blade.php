@@ -23,7 +23,8 @@
             <tr>
                 <th>Name</th>
                 <th>EntryPoint</th>
-                <th>削除</th>
+                
+                <th>edit</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +32,11 @@
             <tr class="link-row" data-href="">
                 <td>{{$api->method}}</td>          
                 <td>{{$api->entry_point}}</td>
-                <td>削除</td>
+                <td>{{$api->entry_point}}</td>
+                <td>
+                    <a href='{{url("admin/api/edit/{$api->id}")}}' >Edit</a>
+                    <a href='{{url("admin/api/delete/{$api->id}")}}' >Delete</a>
+                </td>
             </tr>
             @endforeach
 

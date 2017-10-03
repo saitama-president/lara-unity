@@ -27,13 +27,13 @@ class Statistic extends Model implements \App\Common\CreateTable {
     }
     
     public static function GetStatics($api_id=1, \DateTime $datetime=null){
-        $s=
-            Statistic::where("id",1)
+        
+        $s=Statistic::where("id",$api_id)
             ->where("begin_datetime","<=", \Carbon\Carbon::now())
             ->where(\Carbon\Carbon::now() ,"<","end_datetime" )
-            ->first()
-            ;
+            ->first();
         
+        //統計がない場合は新規に作成
         if(empty($s)){
             $s=new Statistic();
             //一時間後をカウントする
@@ -47,6 +47,21 @@ class Statistic extends Model implements \App\Common\CreateTable {
             
         }        
         return $s;        
+    }
+    
+    
+    public function access($total_exec_time=0,$isSuccess=true){
+        $this->access_count++;
+        if($isSuccess){
+            $this->success_count++;
+        }
+        else{
+            $this->error_count++;
+        }
+        
+        
+        $this->save();
+        
     }
 
 }
