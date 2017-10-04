@@ -42,7 +42,7 @@
                                  @endif
                 ></span>
                 <span>GET <input type="radio" name="method" value="GET"
-                                 @if($api->method =="GET")
+                                 @if(!empty($api) && $api->method =="GET")
                                     checked
                                  @endif                                 
                                  ></span>                
@@ -53,7 +53,8 @@
             <td>
                 <input type="text" name="entry_point" 
                        placeholder="e.g. 'game/update friend/request '" 
-                       value="{{$api->entry_point}}">
+                       value="{{empty($api)?'':$api->entry_point}}"
+                       >
             </td>
         </tr>
         <tr>
@@ -62,7 +63,7 @@
                 <input type="text" 
                        name="controller" 
                        placeholder="input Controller name" 
-                       value="{{$api->controller()}}">
+                       value="{{empty($api)?'':$api->controller()}}">
                 Controller
             </td>
         </tr>
@@ -72,7 +73,7 @@
                 <input type="text" 
                        name="action" 
                        placeholder="input action method name" 
-                       value="{{$api->action()}}">
+                       value="{{empty($api)?'':$api->action()}}">
                 Action
             </td>
         </tr>
@@ -83,8 +84,10 @@
                 <a href="javascript:AddParam();"">+</a>
                 <ul id="API_PARAMS">
                     
-                    @foreach($api->params() as $param)
-                    <li></li>
+                    @foreach(empty($api)?[]:$api->params() as $param)
+                    <li>
+                        aaa
+                    </li>
                     @endforeach
                 </ul>
             </td>

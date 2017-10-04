@@ -66,7 +66,7 @@ class APIController extends Controller
         $valid=true;
         
         $api= empty($id)
-            ?API::firstOrNew([])
+            ?new API()
             :API::find($id)->first()
             ;
         

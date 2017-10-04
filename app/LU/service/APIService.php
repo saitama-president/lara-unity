@@ -20,5 +20,12 @@ class APIService {
         Artisan::call('api:down');
         Artisan::call('api:up');
     }
+    
+    public function Generate2Ajax(){
+        
+        return view("api.ajax",[
+            "api_list"=> \App\LU\data\API::all()            
+        ])->render();
+    }
 
 }

@@ -9,21 +9,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('tt', function () {
+Route::get('test', function () {
+    $s=new App\LU\service\APIService();
     
-    
-    $class= \Project\Controllers\testAppController::class;
-    $con=new $class();
-    return call_user_func([$con,"TestMethod"]);
+    return $s->Generate2Ajax();
 });
-/*
-Route::group(['middleware' => ['api']],function(){
-    Route::Get("hb",function(){
-        return ["OK"];
-    });
-});
- * 
- */
+
 
 //管理者ログインを行う
 Route::get('admin/login',"AdminController@login");
