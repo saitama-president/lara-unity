@@ -7,15 +7,20 @@
 @endsection
 
 @section('contents')
-<h1>API List</h1> 
+<h1>API Statuses</h1> 
 
-<a href='{{url("admin/api/add")}}'>追加</a>
+<div>
+    <form action="">
+        
+        
+    </form>    
+</div>
 
 <div>
   <table>
     <thead>
       <tr>
-        <th>A</th>
+        <th>entry_point</th>
         <th>B</th>
       </tr>
     </thead>

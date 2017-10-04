@@ -102,6 +102,10 @@ class APIController extends Controller
     public function delete(){
     }
     
+    public function status(){
+        
+        return view("api/status");
+    }
 
     
     
