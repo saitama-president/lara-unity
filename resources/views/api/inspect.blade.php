@@ -36,10 +36,11 @@
 <div>    
     <ul id="API_MAP">
         @foreach(App\LU\data\API::All() as $api)
-            <li onclick="alert(12345);">
+        <li id="API_{{$api->id}}">
             
-            <span>{{$api->name}}</span>
-            <span>{{$api->success_count}}/{{$api->access_count}}</span>
+            <span>{{$api->entry_point}}</span>
+            
+            <span></span>
         </li>
         @endforeach
     </ul>

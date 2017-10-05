@@ -104,7 +104,7 @@ class APIController extends Controller
     
     public function status(){
         
-        return view("api/status");
+        return view("api/inspect");
     }
 
     
